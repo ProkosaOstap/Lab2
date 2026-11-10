@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h2 Комплектації автомобілів
+
+  table
+    thead
+      tr
+        th Марка
+        th Модель
+        th Комплектація
+        th Двигун
+        th Ціна
+        th Дії
+
+    tbody
+      each car in configurations
+        tr
+          td= car.brand
+          td= car.model
+          td= car.configuration
+          td= car.engine
+          td #{car.price} $
+          td
+            a(href=`/configurations/edit/${car.id}`) Редагувати

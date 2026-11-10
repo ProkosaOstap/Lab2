@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h2 Панель керування
+
+  .cards
+    .card
+      h3 Марки автомобілів
+      p= brandsCount
+      a(href="/brands") Переглянути
+
+    .card
+      h3 Комплектації
+      p= configurationsCount
+      a(href="/configurations") Переглянути
+
+    .card
+      h3 Клієнти
+      p= clientsCount
+      a(href="/clients") Переглянути
+
+    .card
+      h3 Продажі
+      p= salesCount
+      a(href="/sales") Переглянути

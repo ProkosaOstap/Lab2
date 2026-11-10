@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h2 Продажі
+
+  table
+    thead
+      tr
+        th Клієнт
+        th Автомобіль
+        th Дата продажу
+        th Ціна
+        th Статус
+        th Дії
+
+    tbody
+      each sale in sales
+        tr
+          td= sale.client
+          td= sale.car
+          td= sale.saleDate
+          td #{sale.price} $
+          td
+            span.status= sale.status
+          td
+            a(href=`/sales/edit/${sale.id}`) Редагувати

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 Додаткові опції
+
+  table
+    thead
+      tr
+        th Назва опції
+        th Ціна
+        th Дії
+
+    tbody
+      each option in options
+        tr
+          td= option.name
+          td #{option.price} $
+          td
+            a(href=`/options/edit/${option.id}`) Редагувати

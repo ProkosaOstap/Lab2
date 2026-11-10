@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h2 Марки автомобілів
+
+  table
+    thead
+      tr
+        th Назва
+        th Країна
+        th Моделі
+        th Дії
+
+    tbody
+      each brand in brands
+        tr
+          td= brand.name
+          td= brand.country
+          td= brand.models.join(', ')
+          td
+            a(href=`/brands/edit/${brand.id}`) Редагувати

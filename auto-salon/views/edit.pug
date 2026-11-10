@@ -1,0 +1,160 @@
+extends layout
+
+block content
+  h2= title
+
+  if errors && errors.length
+    .errors
+      h3 Помилки:
+
+      ul
+        each error in errors
+          li= error
+
+  form(method="POST")
+    if type === 'brands'
+      label(for="name") Назва марки:
+      input#name(
+        type="text"
+        name="name"
+        value=item.name
+      )
+
+      label(for="country") Країна-виробник:
+      input#country(
+        type="text"
+        name="country"
+        value=item.country
+      )
+
+      label(for="models") Моделі через кому:
+      input#models(
+        type="text"
+        name="models"
+        value=Array.isArray(item.models) ? item.models.join(', ') : item.models
+      )
+
+    else if type === 'configurations'
+      label(for="brand") Марка:
+      input#brand(
+        type="text"
+        name="brand"
+        value=item.brand
+      )
+
+      label(for="model") Модель:
+      input#model(
+        type="text"
+        name="model"
+        value=item.model
+      )
+
+      label(for="configuration") Комплектація:
+      input#configuration(
+        type="text"
+        name="configuration"
+        value=item.configuration
+      )
+
+      label(for="engine") Двигун:
+      input#engine(
+        type="text"
+        name="engine"
+        value=item.engine
+      )
+
+      label(for="price") Ціна:
+      input#price(
+        type="number"
+        name="price"
+        value=item.price
+        step="0.01"
+      )
+
+    else if type === 'clients'
+      label(for="fullName") ПІБ клієнта:
+      input#fullName(
+        type="text"
+        name="fullName"
+        value=item.fullName
+      )
+
+      label(for="phone") Телефон:
+      input#phone(
+        type="text"
+        name="phone"
+        value=item.phone
+      )
+
+      label(for="email") Email:
+      input#email(
+        type="email"
+        name="email"
+        value=item.email
+      )
+
+    else if type === 'options'
+      label(for="name") Назва опції:
+      input#name(
+        type="text"
+        name="name"
+        value=item.name
+      )
+
+      label(for="price") Ціна:
+      input#price(
+        type="number"
+        name="price"
+        value=item.price
+        step="0.01"
+      )
+
+    else if type === 'sales'
+      label(for="client") Клієнт:
+      input#client(
+        type="text"
+        name="client"
+        value=item.client
+      )
+
+      label(for="car") Автомобіль:
+      input#car(
+        type="text"
+        name="car"
+        value=item.car
+      )
+
+      label(for="saleDate") Дата продажу:
+      input#saleDate(
+        type="date"
+        name="saleDate"
+        value=item.saleDate
+      )
+
+      label(for="price") Ціна:
+      input#price(
+        type="number"
+        name="price"
+        value=item.price
+        step="0.01"
+      )
+
+      label(for="status") Статус:
+      select#status(name="status")
+        option(
+          value="Продано"
+          selected=item.status === 'Продано'
+        ) Продано
+
+        option(
+          value="Очікується"
+          selected=item.status === 'Очікується'
+        ) Очікується
+
+        option(
+          value="Скасовано"
+          selected=item.status === 'Скасовано'
+        ) Скасовано
+
+    button(type="submit") Зберегти
+    a.button(href=`/${type}`) Скасувати

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h2 Клієнти
+
+  table
+    thead
+      tr
+        th ПІБ
+        th Телефон
+        th Email
+        th Дії
+
+    tbody
+      each client in clients
+        tr
+          td= client.fullName
+          td= client.phone
+          td= client.email
+          td
+            a(href=`/clients/edit/${client.id}`) Редагувати
